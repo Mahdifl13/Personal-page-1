@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style_index.css">
+</head>
+<body>
+    <div class="container"> 
+
+        <div class="image-side">
+            <img src="image/P1.jpg" alt="Pictuer">
+        </div>
+
+        <div class="login-side">
+            <div class="login-box">
+                <h2>ورود به حساب</h2>
+                <form onsubmit="return login(event)" autocomplete="off"> 
+                    <input type="text" id="username" placeholder="نام کاربری" required>
+                    <input type="password" id="password" placeholder="رمز عبور" required>
+                    <p id="error"></p>
+                    <button type="submit">ورود</button>
+                </form>
+                <script>
+                    function login(event)
+                    {
+                        event.preventDefault();
+
+                        const username = document.getElementById("username").value;
+                        const password = document.getElementById("password").value;
+                        const error = document.getElementById("error");
+
+                        const correctUser = "403757430";
+                        const correctPass = "12345678";
+
+                        if (username === correctUser && password === correctPass)
+                        {
+                            window.location.href = "About_me.html";
+                        }
+                        else
+                        {
+                            error.textContent = "نام کاریری یا رمز عبور اشتباه است";
+                            error.style.color = "red";
+                            return false;
+                        }
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
