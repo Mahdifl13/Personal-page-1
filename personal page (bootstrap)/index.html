@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ورود به حساب</title>
+
+
+<link rel="stylesheet" href="style_index.css">
+<link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
+
+</head>
+<body>
+
+<div class="login-container flex-lg-row-reverse">
+
+<div class="image-side">
+    <img src="image/P1.jpg" alt="تصویر ورود">
+</div>
+
+
+<div class="login-side">
+    <div class="login-box">
+        <form id="loginForm" class="needs-validation" novalidate autocomplete="off">
+            <h2 class="text-center mb-4 text-light">ورود به حساب</h2>
+            <div class="mb-3 position-relative">
+                <div class="input-group">
+                    <input type="text" class="form-control form-control-lg rounded-pill text-end" id="username" placeholder="نام کاربری" required>
+                        <span class="invalid-feedback-icon d-none" id="username-error-icon">
+                            <i class="bi bi-x-circle-fill"></i>
+                        </span>
+                </div>
+                <div class="invalid-feedback text-end">
+                    لطفاً نام کاربری را وارد کنید.
+                </div>
+            </div>
+            <div class="mb-3 position-relative">
+                <div class="input-group">
+                    <input type="password" class="form-control form-control-lg rounded-pill text-end" id="password" placeholder="رمز عبور" required>
+                        <span class="invalid-feedback-icon d-none" id="password-error-icon">
+                            <i class="bi bi-x-circle-fill"></i>
+                        </span>
+                </div>
+                    <div class="invalid-feedback text-end">
+                        لطفاً رمز عبور را وارد کنید.
+                    </div>
+            </div>
+            <div class="mb-3">
+                <p id="error" class="text-danger text-center small" style="min-height: 24px;"></p>
+            </div>
+            <button type="submit" class="btn btn-lg w-100 rounded-pill shadow-sm btn-custom text-white border-0">
+                ورود
+            </button>
+        </form>
+    </div>
+</div>
+
+
+<script src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+(() => {
+    'use strict'
+    const forms = document.querySelectorAll('.needs-validation')
+    Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+            }
+            form.classList.add('was-validated')
+            }, false)
+    })
+})()
+
+const usernameInput = document.getElementById('username')
+const passwordInput = document.getElementById('password')
+const usernameIcon = document.getElementById('username-error-icon')
+const passwordIcon = document.getElementById('password-error-icon')
+
+const showErrorIcon = (input, icon) => {
+    if (input.validationMessage) {
+        icon.classList.remove('d-none')
+    } else {
+        icon.classList.add('d-none')
+    }
+}
+
+usernameInput.addEventListener('input', () => showErrorIcon(usernameInput, usernameIcon))
+passwordInput.addEventListener('input', () => showErrorIcon(passwordInput, passwordIcon))
+
+
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+    if (!this.checkValidity()) return;
+    e.preventDefault();
+
+    const username = usernameInput.value.trim();
+    const password = passwordInput.value;
+    const error = document.getElementById('error');
+
+    const correctUser = "403757430";
+    const correctPass = "12345678";
+
+    if (username === correctUser && password === correctPass) {
+        localStorage.setItem('isLoggedIn', 'true');
+        window.location.href = "About_me.html";
+    } else {
+        error.textContent = "نام کاربری یا رمز عبور اشتباه است";
+
+        if (username !== correctUser) showErrorIcon(usernameInput, usernameIcon)
+        if (password !== correctPass) showErrorIcon(passwordInput, passwordIcon)
+    }
+});
+</script>
+
+</body>
+</html>

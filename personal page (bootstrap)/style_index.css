@@ -1,0 +1,88 @@
+body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1e1f29, #12123a);
+      direction: rtl;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 0;
+}
+
+.login-container {
+      display: flex;
+      width: 100%;
+      max-width: 1000px;
+      height: 600px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(138, 43, 226, 0.4);
+}
+
+.image-side {
+      flex: 1;
+}
+
+.image-side img {
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+}
+
+.login-side {
+      flex: 1;
+      background: rgba(48, 123, 235, 0.25);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+}
+
+.login-box {
+      width: 100%;
+      max-width: 350px;
+}
+
+.btn-custom {
+      background: linear-gradient(135deg, #cba2ea, #3f3381);
+      transition: all 0.3s ease;
+}
+
+.btn-custom:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #7a7eff, #a67eff) !important;
+}
+
+
+.input-group .invalid-feedback-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #dc3545;
+      font-size: 1.2em;
+      pointer-events: none;
+      z-index: 5;
+}
+
+.input-group .form-control {
+      padding-left: 40px !important;
+}
+
+
+@media (max-width: 992px) {
+      .login-container {
+        flex-direction: column;
+        height: auto;
+        margin: 20px;
+      }
+      .image-side {
+        height: 250px;
+      }
+      .login-side {
+        padding: 40px 20px;
+      }
+}
